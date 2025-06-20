@@ -1,5 +1,6 @@
 {
   "apiEndpoint": "https://api.example.com/submit",
+  "runEvaluationsApiEndpoint": "https://api.example.com/evaluate",
   "formFields": [
     {
       "id": "name",
