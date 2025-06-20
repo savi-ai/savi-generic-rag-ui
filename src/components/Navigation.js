@@ -9,7 +9,7 @@ function Navigation() {
     <AppBar position="static">
       <Toolbar>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          RAG Experimentation
+          RAG Experimentation Tool
         </Typography>
         <Box sx={{ display: 'flex', gap: 2 }}>
           <Button
