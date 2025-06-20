@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { Container, Grid, Paper, Typography, Box, FormControlLabel, Checkbox, TextField } from '@mui/material';
+import { Container, Grid, Paper, Typography, Box, FormControlLabel, Checkbox, TextField, CircularProgress } from '@mui/material';
 import DeveloperForm from './DeveloperForm';
 import ResponseDisplay from './ResponseDisplay';
 import formConfig from '../config/formConfig.json';
 
 function DeveloperPage() {
   const [response, setResponse] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
   const [isVector, setIsVector] = useState(false);
   const [topK, setTopK] = useState(5);
   const [temperature, setTemperature] = useState(0.7);
@@ -14,6 +15,9 @@ function DeveloperPage() {
 
   const handleSubmit = async (formData, mode = 'test') => {
     try {
+      setIsLoading(true);
+      setResponse(null); // Clear previous response
+
       // Create llmParameters object
       const llmParameters = {
         isVector,
@@ -53,6 +57,8 @@ function DeveloperPage() {
         message: 'Failed to submit form: ' + error.message,
         timestamp: new Date().toISOString()
       });
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -150,10 +156,26 @@ function DeveloperPage() {
             <Typography variant="h6" gutterBottom>
               Response
             </Typography>
-            <ResponseDisplay 
-              response={response} 
-              fields={formConfig.responseFields} 
-            />
+            {isLoading ? (
+              <Box sx={{ 
+                display: 'flex', 
+                justifyContent: 'center', 
+                alignItems: 'center', 
+                minHeight: '200px',
+                flexDirection: 'column',
+                gap: 2
+              }}>
+                <CircularProgress size={60} />
+                <Typography variant="body1" color="text.secondary">
+                  Processing your request...
+                </Typography>
+              </Box>
+            ) : (
+              <ResponseDisplay 
+                response={response} 
+                fields={formConfig.responseFields} 
+              />
+            )}
           </Paper>
         </Grid>
       </Grid>
