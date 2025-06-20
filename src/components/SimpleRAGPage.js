@@ -30,13 +30,13 @@ function SimpleRAGPage() {
   return (
     <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
       <Typography variant="h4" component="h1" gutterBottom align="center">
-        Simple RAG Application
+        Test Form
       </Typography>
       <Grid container spacing={3}>
         <Grid item xs={12} md={6}>
           <Paper sx={{ p: 3 }}>
             <Typography variant="h6" gutterBottom>
-              Prompt Variables
+              Input Values
             </Typography>
             <DynamicForm 
               fields={formConfig.formFields} 

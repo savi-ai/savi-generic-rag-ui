@@ -65,7 +65,7 @@ function DeveloperPage() {
   return (
     <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
       <Typography variant="h4" component="h1" gutterBottom align="center">
-        Developer RAG Application
+        Developer Test Form
       </Typography>
       <Grid container spacing={3}>
         <Grid item xs={12} md={6}>
@@ -143,7 +143,7 @@ function DeveloperPage() {
           </Paper>
           <Paper sx={{ p: 3 }}>
             <Typography variant="h6" gutterBottom>
-              Developer Variables
+              Developer Parameters
             </Typography>
             <DeveloperForm 
               fields={formConfig.formFields} 

@@ -194,7 +194,7 @@ const DeveloperForm = ({ fields, onSubmit }) => {
         {mode !== 'evaluation' && (
           <Box sx={{ mb: 3 }}>
             <Typography variant="h6" gutterBottom>
-              Form Variables
+              Input Values
             </Typography>
             {fields.map(renderField)}
           </Box>
