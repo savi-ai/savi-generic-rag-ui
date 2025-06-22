@@ -20,7 +20,7 @@ function Navigation() {
               backgroundColor: location.pathname === '/' ? 'rgba(255, 255, 255, 0.1)' : 'transparent'
             }}
           >
-            Simple RAG
+            Use Cases
           </Button>
           <Button
             color="inherit"
