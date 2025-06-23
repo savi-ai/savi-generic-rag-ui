@@ -198,6 +198,7 @@ function DeveloperPage() {
       } else {
         // Run mode - send query/evaluation data
         formDataToSend.append('subMode', subMode);
+        formDataToSend.append('usecaseId', usecaseId);
         
         if (subMode === 'test') {
           // Add query for test mode
@@ -758,6 +759,18 @@ function DeveloperPage() {
             </Box>
           </Box>
           
+          {/* Use Case ID - Available for both Test and Evaluation */}
+          <TextField
+            label="Use Case ID"
+            value={usecaseId}
+            onChange={(e) => setUsecaseId(e.target.value)}
+            fullWidth
+            margin="normal"
+            placeholder="Enter the use case ID for the documents you want to query"
+            helperText="This ID should match the use case ID used when uploading documents"
+            sx={{ mb: 3 }}
+          />
+          
           {subMode === 'test' ? (
             <Box>
               <TextField
@@ -866,7 +879,7 @@ function DeveloperPage() {
             <Button
               variant="contained"
               onClick={handleSubmit}
-              disabled={isLoading || (subMode === 'test' ? !query.trim() : evaluationData.length === 0)}
+              disabled={isLoading || !usecaseId.trim() || (subMode === 'test' ? !query.trim() : evaluationData.length === 0)}
               sx={{ minWidth: 120 }}
             >
               {isLoading ? <CircularProgress size={20} /> : 'Submit'}
